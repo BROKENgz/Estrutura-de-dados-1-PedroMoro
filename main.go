@@ -88,3 +88,27 @@ func (l *lista) removerFim() (int, bool) {
 	anterior.proximo = nil
 	return removido.valor, true
 }
+
+// Exercício 5
+func (l *lista) removerPosicao(posicao int) (int, bool) {
+	if posicao < 0 || l.inicio == nil {
+		return 0, false
+	}
+
+	if posicao == 0 {
+		return l.removerInicio()
+	}
+
+	anterior := l.inicio
+	for i := 0; i < posicao-1 && anterior != nil; i++ {
+		anterior = anterior.proximo
+	}
+
+	if anterior == nil || anterior.proximo == nil {
+		return 0, false
+	}
+
+	removido := anterior.proximo
+	anterior.proximo = removido.proximo
+	return removido.valor, true
+}
