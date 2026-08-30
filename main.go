@@ -128,3 +128,23 @@ func (l *lista) posicao(valorProcurado int) (int, bool) {
 
 	return 0, false
 }
+
+// Exercício 7
+func (l *lista) valorNaPosicao(posicaoProcurada int) (int, bool) {
+	if posicaoProcurada < 0 {
+		return 0, false
+	}
+
+	atual := l.inicio
+	posicao := 0
+
+	for atual != nil {
+		if posicao == posicaoProcurada {
+			return atual.valor, true
+		}
+		atual = atual.proximo
+		posicao++
+	}
+
+	return 0, false
+}
