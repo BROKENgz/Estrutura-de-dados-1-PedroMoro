@@ -112,3 +112,19 @@ func (l *lista) removerPosicao(posicao int) (int, bool) {
 	anterior.proximo = removido.proximo
 	return removido.valor, true
 }
+
+// Exercício 6
+func (l *lista) posicao(valorProcurado int) (int, bool) {
+	atual := l.inicio
+	posicao := 0
+
+	for atual != nil {
+		if atual.valor == valorProcurado {
+			return posicao, true
+		}
+		atual = atual.proximo
+		posicao++
+	}
+
+	return 0, false
+}
